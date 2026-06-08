@@ -1,16 +1,16 @@
-# Kashish-Saini-open-source-contribution-log
-# Contribution [#]: [Issue Title]
+# Contribution 200: Add compatibility test for $maxN (array element) 
 
-**Contribution Number:** [1 / 2 / 3]  
-**Student:** [Your Name]  
-**Issue:** [GitHub issue link]  
-**Status:** [Phase I / Phase II / Phase III / Phase IV] [In Progress / Complete]
+**Contribution Number:** 200
+**Student:** Kashish Saini  
+**Issue:** [[GitHub issue link]  ](https://github.com/documentdb/functional-tests/issues/200)
+**Status:** Phase I complete
 
 ---
 
 ## Why I Chose This Issue
 
-[1-2 paragraphs explaining why this issue interests you, how it matches your skills/learning goals, what you hope to learn]
+I chose this issue because it's a well-scoped, beginner-friendly task that focuses on writing compatibility tests for the $maxN array expression operator in DocumentDB. As someone early in my open source journey, I wanted something where I could focus on learning the contribution workflow without getting overwhelmed by complex feature work. Writing tests felt like the right entry point.
+This issue matches my learning goals because I want to get comfortable with Python testing patterns and understand how real-world projects structure their test suites. I'm hoping to learn how to read existing code to understand conventions, write meaningful edge case tests, and go through a full PR review cycle with actual maintainers.
 
 ---
 
