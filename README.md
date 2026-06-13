@@ -3,7 +3,7 @@
 **Contribution Number:** 200
 **Student:** Kashish Saini  
 **Issue:** [GitHub issue link](https://github.com/documentdb/functional-tests/issues/200)
-**Status:** Phase III complete
+**Status:** Phase II complete
 
 ---
 
