@@ -3,7 +3,7 @@
 **Contribution Number:** 200
 **Student:** Kashish Saini  
 **Issue:** [GitHub issue link](https://github.com/documentdb/functional-tests/issues/200)
-**Status:** Phase II complete
+**Status:** Phase III complete
 
 ---
 
@@ -100,11 +100,20 @@ The existing smoke test at `maxN-array-element/test_smoke_expression_maxN-array-
 5. Run pre-commit checks to confirm formatting and linting pass
 6. Commit and push to the working branch
 
-**Implement:** [Link to your branch/commits as you work]
+**Implement:**  
+https://github.com/hehehe-hahaha/functional-tests/tree/fix-issue-200
 
-**Review:** [Self-review checklist - does it follow the project's contribution guidelines?]
+**Review:**  
+Checked against CONTRIBUTING.md before submitting:
+- One assertion per test function
+- Used `execute_command` for all MongoDB operations, no raw pymongo calls
+- Used `assertSuccess` instead of plain assert for consistent failure logs
+- Added `@pytest.mark.aggregate` tag to every test
+- Used descriptive test function names following the `test_maxN_with_<scenario>` pattern
+- Added docstrings to every test explaining what it validates, the expected outcome, and any special conditions
 
-**Evaluate:** [How will you verify it works?]
+**Evaluate:**  
+Ran all tests locally against MongoDB and confirmed every test passes. Also ran pre-commit checks before committing and all formatting, linting, and type checks passed cleanly.
 
 ---
 
@@ -112,36 +121,48 @@ The existing smoke test at `maxN-array-element/test_smoke_expression_maxN-array-
 
 ### Unit Tests
 
-- [ ] Test case 1: [Description]
-- [ ] Test case 2: [Description]
-- [ ] Test case 3: [Description]
+- [x] `n` larger than the array size — confirms all elements are returned without an error
+- [x] `n = 1` — confirms the result is a single element array not a scalar
+- [x] Duplicate values in the array — confirms duplicates are kept and not deduplicated
+- [x] Negative numbers in the array — confirms max logic works correctly with negative values
+- [x] Empty array input — confirms an empty array is returned not an error
+- [x] Null values mixed into the array — confirms nulls are ignored and do not crash the operator
+- [x] `n` as a dynamic field reference — confirms `n` can be read from a document field instead of hardcoded
+- [x] `$maxN` inside a `$group` stage — confirms the operator works as an accumulator across multiple documents
 
 ### Integration Tests
 
-- [ ] Integration scenario 1
-- [ ] Integration scenario 2
+- [x] All 8 tests run against a live MongoDB instance on port 27017 and pass end to end
+- [x] Full folder test suite run to confirm no existing tests were broken by the new file
 
 ### Manual Testing
 
-[What you tested manually and results]
+Ran the full test suite for the `maxN-array-element` folder locally using pytest with the MongoDB connection string and engine name flags. Every test passed on the first full run after writing. Pre-commit hooks were also run manually before committing and all checks passed including black formatting, isort import ordering, flake8 linting, and mypy type checking.
 
 ---
 
 ## Implementation Notes
 
-### Week [X] Progress
+### Week 1 Progress
 
-[What you built this week, challenges faced, decisions made]
+Selected issue #200 from the documentdb/functional-tests repository. Went through the issue selection checklist, researched the repository structure, found the existing smoke test in the `maxN-array-element` folder, and confirmed this was a well-scoped issue with clear context and active maintenance.
 
-### Week [Y] Progress
+### Week 2 Progress
 
-[Continue documenting as you work]
+Set up the local development environment which involved installing MongoDB via Homebrew, installing project dependencies using pip3, and configuring pre-commit hooks. Both MongoDB not being installed and pip not being on PATH required some troubleshooting before getting everything running.
+
+Once the environment was ready, created the working branch `fix-issue-200` and wrote the new compatibility test file `test_compatibility_expression_maxN.py` covering 8 edge case scenarios. Used the existing smoke test as a direct template for structure and conventions.
+
+The main thing that took research was understanding the difference between using `$maxN` in a `$project` stage versus a `$group` stage since they work in fundamentally different ways. A `$sort` stage was also added to the `$group` test to make the result order deterministic so the test does not fail inconsistently.
+
+All 8 tests passed locally, pre-commit checks passed cleanly, and the branch was pushed to the fork.
 
 ### Code Changes
 
-- **Files modified:** [List]
-- **Key commits:** [Links to important commits]
-- **Approach decisions:** [Why you chose certain approaches]
+- **Files added:** `documentdb_tests/compatibility/tests/core/operator/expressions/array/maxN-array-element/test_compatibility_expression_maxN.py`
+- **Files modified:** None — no existing files were changed
+- **Branch:** https://github.com/hehehe-hahaha/functional-tests/tree/fix-issue-200
+- **Approach decisions:** All new tests were written in a separate compatibility test file rather than adding to the existing smoke test. This keeps concerns separated and matches the pattern used by other operators in the repo. The smoke test was left completely untouched.
 
 ---
 
