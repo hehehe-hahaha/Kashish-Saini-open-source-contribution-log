@@ -3,7 +3,7 @@
 **Contribution Number:** 200
 **Student:** Kashish Saini  
 **Issue:** [GitHub issue link](https://github.com/documentdb/functional-tests/issues/200)
-**Status:** Phase III complete
+**Status:** Phase IV In Progress
 
 ---
 
@@ -168,15 +168,15 @@ All 8 tests passed locally, pre-commit checks passed cleanly, and the branch was
 
 ## Pull Request
 
-**PR Link:** [GitHub PR URL when submitted]
+**PR Link:** [GitHub PR URL when submitted](https://github.com/documentdb/functional-tests/pull/608)
 
-**PR Description:** [Draft or final PR description - much of the content above can be adapted]
+**PR Description:** Adds a compatibility test file for the $maxN array expression operator covering 8 edge case scenarios that were missing from the existing smoke test.
 
 **Maintainer Feedback:**
 - [Date]: [Summary of feedback received]
 - [Date]: [How you addressed it]
 
-**Status:** [Awaiting review / Iterating / Approved / Merged]
+**Status:** Awaiting review
 
 ---
 
